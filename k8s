@@ -1,0 +1,40 @@
+# Check Docker installation
+docker version
+
+#Kubernetes installation
+
+#Linux
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+#MacOs
+
+# for Intel Macs
+[ $(uname -m) = x86_64 ]&& curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-darwin-amd64
+# for M1 / ARM Macs
+[ $(uname -m) = arm64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-darwin-arm64
+chmod +x ./kind
+mv ./kind /some-dir-in-your-PATH/kind
+
+
+#Windows
+
+curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.18.0/kind-windows-amd64
+Move-Item .\kind-windows-amd64.exe c:\some-dir-in-your-PATH\kind.exe
+
+
+#check if kind is intsalled
+kind
+
+# check kubectl installation
+kubectl version
+
+kubectl version --output=yaml
+
+# install kubernetes cluster
+
+kind create cluster --name mycluster
+
+
+
